@@ -15,7 +15,8 @@ import com.ml.mlbs.model.User;
 import com.ml.mlbs.service.IUserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+// @CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://e-commerce-f.web.app")
 public class UserController {
 
     @Autowired
