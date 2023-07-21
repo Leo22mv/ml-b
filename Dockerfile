@@ -40,13 +40,13 @@
 
 
 # Utiliza una imagen base de Java 17
-FROM adoptopenjdk:17-jdk-hotspot
+FROM adoptopenjdk:17-jre-hotspot
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
 # Copia el archivo JAR de tu aplicación en el contenedor
-COPY ml-b-s-0.0.1-SNAPSHOT.jar app.jar
+COPY target/ml-b-s-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto en el que tu aplicación Java se ejecuta (ajústalo según tu aplicación)
 EXPOSE 8080
