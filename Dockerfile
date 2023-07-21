@@ -1,4 +1,4 @@
-# FROM eclipse-temurin:17-jdk-focal
+FROM eclipse-temurin:17-jdk-focal
 
 # WORKDIR /ml-b-s
 
@@ -40,7 +40,7 @@
 
 
 # Utiliza una imagen base de Java 17
-FROM adoptopenjdk:17-jre-hotspot
+# FROM adoptopenjdk:17-jre-hotspot
 # FROM openjdk:17-jdk-slim
 
 
