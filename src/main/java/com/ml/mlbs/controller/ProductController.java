@@ -33,4 +33,5 @@ public class ProductController {
     public void deleteProduct(@RequestBody Long id) {
         iproductService.deleteProduct(id);
     }
+    
 }
