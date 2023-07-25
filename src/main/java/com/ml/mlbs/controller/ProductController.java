@@ -28,5 +28,9 @@ public class ProductController {
     public void saveProduct(@RequestBody Product product) {
         iproductService.saveProduct(product);
     }
-    
+
+    @PostMapping ("/productos/eliminar")
+    public void deleteProduct(@RequestBody Long id) {
+        iproductService.deleteProduct(id);
+    }
 }
