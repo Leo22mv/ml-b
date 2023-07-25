@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ml.mlbs.model.Product;
-import com.ml.mlbs.service.ProductService;
+import com.ml.mlbs.service.IProductService;
 
 @RestController
 // @CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin(origins = "https://e-commerce-f.web.app")
 public class ProductController {
     @Autowired
-    private ProductService iproductService;
+    private IProductService iproductService;
 
     @GetMapping("/productos")
     public List<Product> getProducts() {
@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/productos/{id}")
-    public ResponseEntity<Void> eliminarProducto(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         try {
             iproductService.deleteProduct(id);
             return ResponseEntity.ok().build();
