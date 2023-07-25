@@ -28,4 +28,5 @@ public class ProductController {
     public void saveProduct(@RequestBody Product product) {
         iproductService.saveProduct(product);
     }
+    
 }
