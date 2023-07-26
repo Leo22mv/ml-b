@@ -18,6 +18,6 @@ public class Buy {
     // private Long id_user;
     @ManyToOne
     @JoinColumn(name="id_user")
-    private User user;
+    private UserEntity user;
     private Integer total;
 }

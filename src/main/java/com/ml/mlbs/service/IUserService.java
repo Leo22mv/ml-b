@@ -2,11 +2,11 @@ package com.ml.mlbs.service;
 
 import java.util.List;
 
-import com.ml.mlbs.model.User;
+import com.ml.mlbs.model.UserEntity;
 
 public interface IUserService {
-    public List<User> getUsers();
-    public void saveUser (User user);
-    public User findUser (Long id);
+    public List<UserEntity> getUsers();
+    public void saveUser (UserEntity user);
+    public UserEntity findUser (Long id);
 }
 

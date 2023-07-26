@@ -3,6 +3,7 @@ package com.ml.mlbs.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.ml.mlbs.model.Buy;
@@ -10,7 +11,7 @@ import com.ml.mlbs.model.BuyDetails;
 import com.ml.mlbs.model.BuyDetailsRequest;
 import com.ml.mlbs.model.BuyRequest;
 import com.ml.mlbs.model.Product;
-import com.ml.mlbs.model.User;
+import com.ml.mlbs.model.UserEntity;
 import com.ml.mlbs.repository.BuyDetailsRepository;
 import com.ml.mlbs.repository.BuyRepository;
 
@@ -56,9 +57,10 @@ public class BuyController {
     // }
 
     @PostMapping("/compra")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<String> createBuy(@RequestBody BuyRequest request) {
         try {
-            User user = new User();
+            UserEntity user = new UserEntity();
             user.setId(request.getId_user());
 
             Buy buy = new Buy();
@@ -88,6 +90,7 @@ public class BuyController {
 
 
     @GetMapping("/compras")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Buy>> getBuys() {
         List<Buy> buys = buyRepository.findAll();
         try {
@@ -99,6 +102,7 @@ public class BuyController {
     }
 
     @GetMapping("/compras/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<BuyDetails>> getDetails(@PathVariable Long id) {
         List<BuyDetails> allDetails = buyDetailsRepository.findAll();
         List<BuyDetails> details = new ArrayList<>();
