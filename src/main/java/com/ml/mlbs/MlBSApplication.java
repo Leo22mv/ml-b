@@ -31,7 +31,7 @@ public class MlBSApplication {
 	CommandLineRunner init() {
 		return args -> {
 			UserEntity userEntity = UserEntity.builder()
-					.email("a@amail.com")
+					.email("a")
 					.username("kbe")
 					.password(passwordEncoder.encode("admin"))
 					.nombre("null")
