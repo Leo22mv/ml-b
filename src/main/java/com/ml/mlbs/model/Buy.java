@@ -4,17 +4,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
 @Entity
-public class User {
+@Getter @Setter
+public class Buy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String email;
-    private String nombre;
-    private String username;
-    private String password;
+    private Long id_buy;
+    // private Long id_user;
+    @ManyToOne
+    @JoinColumn(name="id_user")
+    private User user;
+    private Integer total;
 }

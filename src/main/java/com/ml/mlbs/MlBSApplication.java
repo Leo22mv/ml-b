@@ -9,5 +9,5 @@ public class MlBSApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MlBSApplication.class, args);
 	}
-
+	
 }
