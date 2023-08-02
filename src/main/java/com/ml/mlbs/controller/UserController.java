@@ -104,7 +104,7 @@ public class UserController {
 // }
 
     @GetMapping ("/usuarios")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<UserEntity> getUsers() {
         return iuserService.getUsers();
     }
