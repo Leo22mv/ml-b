@@ -72,14 +72,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         User user = (User) authResult.getPrincipal();
         String token = jwtProvider.generateAccessToken(user.getUsername());
         
-        // Obtener el UserEntity desde el UserRepository usando findByUsername
-        // Optional<UserEntity> optionalUserEntity = userRepository.findByUsername(user.getUsername());
-        // UserEntity userEntity = optionalUserEntity.orElse(null); // Obtener el valor del Optional o null si está vacío
-
-        // Long userId = userEntity.getId();
-
-
-
         response.addHeader("Authorization", token);
 
         Map<String, Object> httpResponse = new HashMap<>();
@@ -87,7 +79,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         httpResponse.put("Message", "Autenticación correcta");
         httpResponse.put("Username", user.getUsername());
         httpResponse.put("Role", user.getAuthorities());
-        // httpResponse.put("UserId", userId);
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(httpResponse));
         response.setStatus(HttpStatus.OK.value());
