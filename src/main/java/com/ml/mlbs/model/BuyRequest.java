@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class BuyRequest {
-    private Long id_user;
+    private String username;
     private Integer total;
     private List<BuyDetailsRequest> buy;
 }

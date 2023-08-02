@@ -17,7 +17,7 @@ public class Buy {
     private Long id_buy;
     // private Long id_user;
     @ManyToOne
-    @JoinColumn(name="id_user")
+    @JoinColumn(name="username")
     private UserEntity user;
     private Integer total;
 }

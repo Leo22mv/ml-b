@@ -61,7 +61,7 @@ public class BuyController {
     public ResponseEntity<String> createBuy(@RequestBody BuyRequest request) {
         try {
             UserEntity user = new UserEntity();
-            user.setId(request.getId_user());
+            user.setUsername(request.getUsername());
 
             Buy buy = new Buy();
             buy.setUser(user);
