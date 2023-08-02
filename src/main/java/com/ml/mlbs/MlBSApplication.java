@@ -27,18 +27,18 @@ public class MlBSApplication {
 	@Autowired
 	UserRepository userRepository;
 
-	// @Bean
-	// CommandLineRunner init() {
-	// 	return args -> {
-	// 		UserEntity userEntity = UserEntity.builder()
-	// 				.email("a")
-	// 				.username("kbe")
-	// 				.password(passwordEncoder.encode("admin"))
-	// 				.nombre("null")
-	// 				.roles(Set.of(RoleEntity.builder()
-	// 						.name(ERole.valueOf(ERole.ADMIN.name()))
-	// 						.build()))
-	// 				.build();
+	@Bean
+	CommandLineRunner init() {
+		return args -> {
+			UserEntity userEntity = UserEntity.builder()
+					.email("a")
+					.username("kbe")
+					.password(passwordEncoder.encode("admin"))
+					.nombre("null")
+					.roles(Set.of(RoleEntity.builder()
+							.name(ERole.valueOf(ERole.ADMIN.name()))
+							.build()))
+					.build();
 
 	// 				// UserEntity userEntity2 = UserEntity.builder()
 	// 				// .email("anyi@mail.com")
@@ -58,10 +58,10 @@ public class MlBSApplication {
 	// 				// 				.build()))
 	// 				// 		.build();
 				
-	// 				userRepository.save(userEntity);
+					userRepository.save(userEntity);
 	// 				// userRepository.save(userEntity2);
 	// 				// userRepository.save(userEntity3);
-	// 	};
-	// }
+		};
+	}
 	
 }

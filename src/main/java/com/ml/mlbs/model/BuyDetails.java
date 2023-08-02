@@ -16,7 +16,6 @@ public class BuyDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_details;
-    // private Long id_product;
     @ManyToOne(optional = true)
     @JoinColumn(name = "id_product")
     private Product product;
