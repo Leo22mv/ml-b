@@ -27,6 +27,7 @@ public class MlBSApplication {
 	@Autowired
 	UserRepository userRepository;
 
+	
 	// @Bean
 	// CommandLineRunner init() {
 	// 	return args -> {
