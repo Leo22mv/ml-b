@@ -103,7 +103,6 @@ public class UserController {
 //     }
 // }
 
-
     @GetMapping ("/usuarios")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<UserEntity> getUsers() {
