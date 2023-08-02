@@ -3,6 +3,7 @@ package com.ml.mlbs.security.filters;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ml.mlbs.model.UserEntity;
+import com.ml.mlbs.repository.UserRepository;
 import com.ml.mlbs.security.jwt.JwtProvider;
 
 import jakarta.servlet.FilterChain;
@@ -29,6 +31,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private JwtProvider jwtProvider;
+    private UserRepository userRepository;
 
     public JwtAuthenticationFilter(JwtProvider jwtProvider) {
         this.jwtProvider = jwtProvider;
@@ -68,6 +71,14 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         
         User user = (User) authResult.getPrincipal();
         String token = jwtProvider.generateAccessToken(user.getUsername());
+        
+        // Obtener el UserEntity desde el UserRepository usando findByUsername
+        Optional<UserEntity> optionalUserEntity = userRepository.findByUsername(user.getUsername());
+        UserEntity userEntity = optionalUserEntity.orElse(null); // Obtener el valor del Optional o null si está vacío
+
+        Long userId = userEntity.getId();
+
+
 
         response.addHeader("Authorization", token);
 
@@ -76,6 +87,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         httpResponse.put("Message", "Autenticación correcta");
         httpResponse.put("Username", user.getUsername());
         httpResponse.put("Role", user.getAuthorities());
+        httpResponse.put("UserId", userId);
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(httpResponse));
         response.setStatus(HttpStatus.OK.value());
