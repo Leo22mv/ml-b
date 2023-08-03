@@ -17,6 +17,7 @@ import com.ml.mlbs.repository.UserRepository;
 @SpringBootApplication
 public class MlBSApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(MlBSApplication.class, args);
 	}
@@ -28,7 +29,7 @@ public class MlBSApplication {
 	UserRepository userRepository;
 
 
-	
+
 	// @Bean
 	// CommandLineRunner init() {
 	// 	return args -> {
