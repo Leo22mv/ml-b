@@ -71,6 +71,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         
         User user = (User) authResult.getPrincipal();
         String token = jwtProvider.generateAccessToken(user.getUsername());
+        Long userId = getUserIdByUsername(user.getUsername());
         
         response.addHeader("Authorization", token);
 
@@ -79,6 +80,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         httpResponse.put("Message", "Autenticación correcta");
         httpResponse.put("Username", user.getUsername());
         httpResponse.put("Role", user.getAuthorities());
+        httpResponse.put("UserId", userId);
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(httpResponse));
         response.setStatus(HttpStatus.OK.value());
@@ -87,6 +89,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 
         super.successfulAuthentication(request, response, chain, authResult);
+    }
+
+    private Long getUserIdByUsername(String username) {
+        Optional<UserEntity> userEntityOptional = userRepository.findByUsername(username);
+        return userEntityOptional.map(UserEntity::getId).orElse(null);
     }
 
 }
