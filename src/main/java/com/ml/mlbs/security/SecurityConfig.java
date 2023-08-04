@@ -51,11 +51,11 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .csrf().disable()
-                // .authorizeHttpRequests(auth -> {
+                .authorizeHttpRequests(auth -> {
                 //     auth.requestMatchers("/hola").permitAll();
                 //     auth.anyRequest().authenticated();
-                //     auth.anyRequest().permitAll();
-                // })
+                    auth.anyRequest().permitAll();
+                })
                 .sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
