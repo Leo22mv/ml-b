@@ -1,6 +1,5 @@
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\enums\ERole.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\model\BuyRequest.java
-D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\security\CorsFilter.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\security\filters\JwtAuthenticationFilter.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\repository\RoleRepository.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\controller\UserController.java
@@ -11,6 +10,7 @@ D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\model\UserEntity.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\controller\request\CreateUserDTO.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\MlBSApplication.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\security\CorsConfig.java
+D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\CorsFilter.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\model\Buy.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\service\UserDetailsServiceImpl.java
 D:\Programacion\ML\ML-b\ml-b-s\src\main\java\com\ml\mlbs\controller\ProductController.java
