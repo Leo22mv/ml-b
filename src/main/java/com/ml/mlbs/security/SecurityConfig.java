@@ -51,11 +51,11 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .csrf().disable()
-                // .authorizeHttpRequests(auth -> {
+                .authorizeHttpRequests(auth -> {
                 //     auth.requestMatchers("/hola").permitAll();
                 //     auth.anyRequest().authenticated();
-                    // auth.anyRequest().permitAll();
-                // })
+                    auth.anyRequest().permitAll();
+                })
                 .sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
@@ -103,20 +103,20 @@ public class SecurityConfig {
     //     return source;
     // }
 
-    @Bean
-    public CorsFilter corsFilter() {
-        return new CorsFilter(corsConfigurationSource());
-    }
+    // @Bean
+    // public CorsFilter corsFilter() {
+    //     return new CorsFilter(corsConfigurationSource());
+    // }
 
-    // Configuración para permitir las solicitudes CORS
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://e-commerce-f.web.app")); // Agrega aquí los orígenes permitidos
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Agrega los métodos permitidos
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Agrega los encabezados permitidos
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+    // // Configuración para permitir las solicitudes CORS
+    // @Bean
+    // public CorsConfigurationSource corsConfigurationSource() {
+    //     CorsConfiguration configuration = new CorsConfiguration();
+    //     configuration.setAllowedOrigins(Arrays.asList("https://e-commerce-f.web.app")); // Agrega aquí los orígenes permitidos
+    //     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Agrega los métodos permitidos
+    //     configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Agrega los encabezados permitidos
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", configuration);
+    //     return source;
+    // }
 }
