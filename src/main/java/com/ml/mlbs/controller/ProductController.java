@@ -30,13 +30,13 @@ public class ProductController {
     }
 
     @PostMapping ("/productos/agregar")
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public void saveProduct(@RequestBody Product product) {
         iproductService.saveProduct(product);
     }
 
     @DeleteMapping("/productos/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         // iproductService.deleteProduct(id);
         try {

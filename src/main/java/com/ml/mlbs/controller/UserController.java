@@ -71,40 +71,20 @@ public class UserController {
         // return ResponseEntity.ok("Registro exitoso");
     }
 
-    // @PostMapping("/login")
-    // public ResponseEntity<String> login(@RequestBody LoginForm loginForm) {
-    //     // Validar el nombre de usuario y contraseña
-    //     List<UserEntity> listaUsers = iuserService.getUsers();
-    //     for (UserEntity usuario : listaUsers) {
-    //         if (loginForm.getUsername().equals(usuario.getUsername()) && loginForm.getPassword().equals(usuario.getPassword())) {
-    //             return ResponseEntity.ok("Inicio de sesión exitoso");
-    //         }
-    //     }
-    //     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
-    // }
-
-//     @PostMapping("/login")
-//     public void login(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
-//         // Lógica de autenticación y verificación de credenciales
-        
-//         if (/* credenciales válidas */) {
-//             // Autenticación exitosa
-//             response.setStatus(HttpServletResponse.SC_OK);
-//             // Puedes establecer el contenido de la respuesta si lo deseas
-//             // response.setContentType("application/json");
-//             // response.getWriter().write("Autenticación exitosa");
-//         } else {
-//             // Autenticación fallida
-//             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-//             // Puedes establecer el contenido de la respuesta si lo deseas
-//             // response.setContentType("application/json");
-//             // response.getWriter().write("Autenticación fallida");
-//         }
-//     }
-// }
+    @PostMapping("/iniciar-sesion")
+    public ResponseEntity<String> login(@RequestBody LoginForm loginForm) {
+        // Validar el nombre de usuario y contraseña
+        List<UserEntity> listaUsers = iuserService.getUsers();
+        for (UserEntity usuario : listaUsers) {
+            if (loginForm.getUsername().equals(usuario.getUsername()) && loginForm.getPassword().equals(usuario.getPassword())) {
+                return ResponseEntity.ok("Inicio de sesión exitoso");
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
+    }
 
     @GetMapping ("/usuarios")
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public List<UserEntity> getUsers() {
         return iuserService.getUsers();
     }

@@ -57,7 +57,7 @@ public class BuyController {
     // }
 
     @PostMapping("/compra")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    // @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<String> createBuy(@RequestBody BuyRequest request) {
         try {
             UserEntity user = new UserEntity();
@@ -90,7 +90,7 @@ public class BuyController {
 
 
     @GetMapping("/compras")
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Buy>> getBuys() {
         List<Buy> buys = buyRepository.findAll();
         try {
@@ -102,7 +102,7 @@ public class BuyController {
     }
 
     @GetMapping("/compras/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<BuyDetails>> getDetails(@PathVariable Long id) {
         List<BuyDetails> allDetails = buyDetailsRepository.findAll();
         List<BuyDetails> details = new ArrayList<>();
